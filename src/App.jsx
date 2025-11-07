@@ -12,11 +12,13 @@ import {
 } from './pages';
 
 import { useUser } from '@clerk/clerk-react';
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   const { user } = useUser();
   return (
     <>
+      <Toaster />
       <Routes>
         <Route
           path='/'
