@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { dummyPostsData } from '../assets/assets';
-import { Loading, PostCard, StoriesBar } from '../components';
+import { assets, dummyPostsData } from '../assets/assets';
+import { Loading, PostCard, RecentMessages, StoriesBar } from '../components';
 
 const Feed = () => {
   const [feeds, setFeeds] = useState([]);
@@ -16,11 +16,12 @@ const Feed = () => {
     fetchFeeds();
   }, []);
   return !loading ? (
-    <div className='h-full overflow-y-scroll no-scrollbar py-10 xl:pr-5 flex items-start justify-center xl:gap-8'>
+    <div className='h-full overflow-y-scroll no-scrollbar py-10 xl:pr-5 flex items-start  justify-center xl:gap-8'>
       {/* STORIES AND POST LIST  */}
       <div className=''>
         <StoriesBar />
-        <div className='p-4 space-y-6'>
+        <div className='w-2xl p-4 space-y-6'>
+          // ! added w-2xl remove it when you check it again
           {feeds.map((post, id) => {
             return (
               <PostCard
@@ -31,13 +32,24 @@ const Feed = () => {
           })}
         </div>
       </div>
+
       {/* RIGHT SIDE BAR  */}
-      <div className=''>
-        <div className=''>
-          <h1 className=''>Sponsored</h1>
+      <div className='max-xl:hidden sticky top-0'>
+        <div className='max-w-xs bg-white text-xs p-4 rounded-md inline-flex flex-col gap-2 shadow'>
+          <h3 className='text-slate-800 font-semibold'>Sponsored</h3>
+          <img
+            src={assets.sponsored_img}
+            className='w-75 h-50 rounded-md'
+            alt=''
+          />
+          <p className='text-slate-600'>Email Marketing</p>
+          <p className='text-slate-400'>
+            Supercharge Your Marketing With A Powerful, Easy-To-Use Platform
+            Built For Results
+          </p>
         </div>
         <div className=''>
-          <h1 className=''>Recent Messages</h1>
+          <RecentMessages />
         </div>
       </div>
     </div>
