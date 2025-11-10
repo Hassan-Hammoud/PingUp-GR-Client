@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { dummyPostsData } from '../assets/assets';
-import { Loading, StoriesBar } from '../components';
+import { Loading, PostCard, StoriesBar } from '../components';
 
 const Feed = () => {
   const [feeds, setFeeds] = useState([]);
-  console.log('🚀 ~ Feed ~ feeds:', feeds);
   const [loading, setLoading] = useState(true);
 
   // FETCH FEEDS
@@ -21,7 +20,16 @@ const Feed = () => {
       {/* STORIES AND POST LIST  */}
       <div className=''>
         <StoriesBar />
-        <div className='p-4 space-y-6'>List Of Post</div>
+        <div className='p-4 space-y-6'>
+          {feeds.map((post, id) => {
+            return (
+              <PostCard
+                key={id}
+                post={post}
+              />
+            );
+          })}
+        </div>
       </div>
       {/* RIGHT SIDE BAR  */}
       <div className=''>
