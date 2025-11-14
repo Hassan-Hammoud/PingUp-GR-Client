@@ -21,7 +21,7 @@ const Feed = () => {
       <div className=''>
         <StoriesBar />
         <div className='w-2xl p-4 space-y-6'>
-          // ! added w-2xl remove it when you check it again
+          {/* // ! added w-2xl remove it when you check it again */}
           {feeds.map((post, id) => {
             return (
               <PostCard
