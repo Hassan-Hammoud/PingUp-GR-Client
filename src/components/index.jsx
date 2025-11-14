@@ -7,3 +7,4 @@ export { default as StoriesBar } from './StoriesBar';
 export { default as StoryModal } from './StoryModal';
 export { default as StoryViewer } from './StoryViewer';
 export { default as UserCard } from './UserCard';
+export { default as UserProfileInfo } from './UserProfileInfo';
