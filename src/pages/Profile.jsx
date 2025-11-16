@@ -2,7 +2,12 @@ import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { dummyPostsData, dummyUserData } from './../assets/assets';
-import { Loading, PostCard, UserProfileInfo } from './../components';
+import {
+  Loading,
+  PostCard,
+  ProfileModal,
+  UserProfileInfo,
+} from './../components';
 
 const Profile = () => {
   const { profileId } = useParams();
@@ -102,7 +107,7 @@ const Profile = () => {
         </div>
       </div>
       {/* EDIT PROFILE MODEL */}
-      {showEdit && <p>Show Profile Edit</p>}
+      {showEdit && <ProfileModal setShowEdit={setShowEdit} />}
     </div>
   ) : (
     <Loading />
