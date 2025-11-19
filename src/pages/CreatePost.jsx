@@ -2,16 +2,57 @@ import { Image, X } from 'lucide-react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 // import { dummyUserData } from './../assets/assets';
+import { useAuth } from '@clerk/clerk-react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import api from './../api/axios.js';
 
 const CreatePost = () => {
+  const navigate = useNavigate();
   const user = useSelector(state => state.user.value);
   const [content, setContent] = useState('');
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log('🚀 ~ CreatePost ~ setLoading:', setLoading);
+  const { getToken } = useAuth();
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    if (!images.length && !content) {
+      return toast.error('Please Add At Least One Image Or Text');
+    }
+    setLoading(true);
+    const postType =
+      images.length && content
+        ? 'text_with_image'
+        : images.length
+        ? 'image'
+        : 'text';
+    try {
+      const formData = new FormData();
+      formData.append('content', content);
+      formData.append('post_type', postType);
+
+      images.map(image => {
+        formData.append('images', image);
+      });
+
+      const { data } = await api.post('/api/post/add', formData, {
+        headers: {
+          Authorization: `Bearer ${await getToken()}`,
+        },
+      });
+      if (data.success) {
+        navigate('/');
+      } else {
+        console.log(data.message);
+        throw new Error(data.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+      throw new Error(error.message);
+    }
+
+    setLoading(false);
+  };
 
   return (
     <div className='min-h-screen bg-gradient-to-b from-slate-50 to-white'>

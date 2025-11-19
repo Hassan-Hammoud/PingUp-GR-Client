@@ -51,9 +51,9 @@ const UserProfileInfo = ({ user, posts, profileId, setShowEdit }) => {
               </span>
             </span>
           </div>
-          <div className='flex items-center gap-6 border-t border-gray-200 pt-4'>
+          <div className='flex items-center gap-6 border-t border-gray-200 pt-4 '>
             <div className=''>
-              <span className='sm:text-xl font-bold text-gray-900'>
+              <span className='sm:text-lg font-bold text-gray-900'>
                 {posts.length}
               </span>
               <span className='text-xs sm:text-sm text-gray-500 ml-1'>
@@ -62,7 +62,7 @@ const UserProfileInfo = ({ user, posts, profileId, setShowEdit }) => {
             </div>
 
             <div className=''>
-              <span className=' sm:text-xl font-bold text-gray-900'>
+              <span className=' sm:text-lg font-bold text-gray-900'>
                 {user.followers.length}
               </span>
               <span className='text-xs sm:text-sm text-gray-500 ml-1'>
@@ -71,7 +71,7 @@ const UserProfileInfo = ({ user, posts, profileId, setShowEdit }) => {
             </div>
 
             <div className=''>
-              <span className='sm:text-xl font-bold text-gray-900'>
+              <span className='sm:text-lg  font-bold text-gray-900'>
                 {user.following.length}
               </span>
               <span className='text-xs sm:text-sm text-gray-500 ml-1'>
