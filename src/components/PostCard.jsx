@@ -10,12 +10,15 @@ const PostCard = ({ post }) => {
     '<span class="text-indigo-600">$1</span>'
   );
 
-  const [likes, setLikes] = useState(post.likes_count);
+  const [likes, setLikes] = useState([post.likes_count]); //! check this array
 
   const currentUser = useSelector(state => state.user.value);
+  console.log('🚀 ~ PostCard ~ currentUser:', currentUser._id);
 
   const handleLike = async () => {
-    await setLikes(prevLikes => prevLikes.includes(currentUser._id));
+    await setLikes(prevLikes => {
+      return prevLikes.includes(currentUser._id);
+    });
   };
 
   const navigate = useNavigate();
