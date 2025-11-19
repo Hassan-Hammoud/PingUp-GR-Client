@@ -2,7 +2,8 @@ import { BadgeCheck, Heart, MessageCircle, Share2 } from 'lucide-react';
 import moment from 'moment';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { dummyUserData } from '../assets/assets';
+// import { dummyUserData } from '../assets/assets';
+import { useSelector } from 'react-redux';
 const PostCard = ({ post }) => {
   const postWithHashtags = post.content.replace(
     /(#\w+)/g,
@@ -10,7 +11,8 @@ const PostCard = ({ post }) => {
   );
 
   const [likes, setLikes] = useState(post.likes_count);
-  const currentUser = dummyUserData;
+
+  const currentUser = useSelector(state => state.user.value);
 
   const handleLike = async () => {
     await setLikes(prevLikes => prevLikes.includes(currentUser._id));

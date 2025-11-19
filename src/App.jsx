@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import {
   ChatBox,
@@ -11,11 +12,28 @@ import {
   Profile,
 } from './pages';
 
-import { useUser } from '@clerk/clerk-react';
+import { useAuth, useUser } from '@clerk/clerk-react';
+import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { fetchUser } from './features/user/userSlice.js';
 
 const App = () => {
   const { user } = useUser();
+  const { getToken } = useAuth();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log('🚀 ~ fetchData ~ user:', user);
+      if (user) {
+        const token = await getToken();
+        console.log('🚀 ~ fetchData ~ token:', token);
+        dispatch(fetchUser(token));
+      }
+    };
+    fetchData();
+  }, [user, getToken, dispatch]);
+
   return (
     <>
       <Toaster />

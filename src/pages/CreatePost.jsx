@@ -1,17 +1,17 @@
 import { Image, X } from 'lucide-react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { dummyUserData } from './../assets/assets';
+// import { dummyUserData } from './../assets/assets';
+import { useSelector } from 'react-redux';
 
 const CreatePost = () => {
+  const user = useSelector(state => state.user.value);
   const [content, setContent] = useState('');
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   console.log('🚀 ~ CreatePost ~ setLoading:', setLoading);
 
   const handleSubmit = async () => {};
-
-  const user = dummyUserData;
 
   return (
     <div className='min-h-screen bg-gradient-to-b from-slate-50 to-white'>
