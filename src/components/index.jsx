@@ -1,5 +1,6 @@
 export { default as Loading } from './Loading';
 export { default as MenuItems } from './MenuItems';
+export { default as Notification } from './Notification';
 export { default as PostCard } from './PostCard';
 export { default as ProfileModal } from './ProfileModal';
 export { default as RecentMessages } from './RecentMessages';
