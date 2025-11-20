@@ -15,6 +15,7 @@ const StoryModal = ({ setShowModal, fetchStories }) => {
   ];
   const [mode, setMode] = useState('text');
   const [background, setBackground] = useState(bgColors[0]);
+  console.log('🚀 ~ StoryModal ~ background:', background);
   const [text, setText] = useState('');
   const [media, setMedia] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);

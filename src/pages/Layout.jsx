@@ -8,7 +8,6 @@ import { Loading, Sidebar } from './../components';
 const Layout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const user = useSelector(state => {
-    console.log('🚀 ~ Layout ~ state.user:', state.user);
     return state.user.value;
   });
   return user ? (

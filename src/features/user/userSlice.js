@@ -12,9 +12,7 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async token => {
       Authorization: `Bearer ${token}`,
     },
   });
-  console.log('🚀 ~ token:', token);
 
-  console.log('🚀 ~ data:', data.user);
   return data.success ? data.user : null;
 });
 

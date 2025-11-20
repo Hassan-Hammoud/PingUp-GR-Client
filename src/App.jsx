@@ -15,6 +15,7 @@ import {
 import { useAuth, useUser } from '@clerk/clerk-react';
 import { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { fetchConnections } from './features/connections/connectionsSlice.js';
 import { fetchUser } from './features/user/userSlice.js';
 
 const App = () => {
@@ -24,11 +25,11 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log('🚀 ~ fetchData ~ user:', user);
       if (user) {
         const token = await getToken();
-        console.log('🚀 ~ fetchData ~ token:', token);
+
         dispatch(fetchUser(token));
+        dispatch(fetchConnections(token));
       }
     };
     fetchData();

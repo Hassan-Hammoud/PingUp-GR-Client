@@ -9,7 +9,6 @@ import StoryModal from './StoryModal';
 import StoryViewer from './StoryViewer';
 const StoriesBar = () => {
   const [stories, setStories] = useState([]);
-  console.log('🚀 ~ StoriesBar ~ stories:', stories);
   const [showModal, setShowModal] = useState(false);
   const [viewStory, setViewStory] = useState(null);
 
