@@ -2,10 +2,9 @@ import { useAuth } from '@clerk/clerk-react';
 import { ArrowLeft, Sparkle, TextIcon, Upload } from 'lucide-react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import api from './../api/axios';
+import api from './../api/axios.js';
 
-const StoryModal = ({ setShowModal }) => {
-  // ? add props fetchStories
+const StoryModal = ({ setShowModal, fetchStories }) => {
   const bgColors = [
     '#4F46e5',
     '#7c3aed',
@@ -87,7 +86,7 @@ const StoryModal = ({ setShowModal }) => {
       if (data.success) {
         setShowModal(false);
         toast.success('Story created successfully');
-        // fetchStories()
+        fetchStories();
       } else toast.error(data.message);
     } catch (error) {
       toast.error(error.message);
