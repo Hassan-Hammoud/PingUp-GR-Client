@@ -40,7 +40,7 @@ const ProfileModal = ({ setShowEdit }) => {
 
       profile_picture && userData.append('profile', profile_picture);
 
-      profile_picture && userData.append('cover', cover_photo);
+      cover_photo && userData.append('cover', cover_photo);
 
       const token = await getToken();
       dispatch(updateUser({ userData, token }));
