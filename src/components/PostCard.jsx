@@ -47,7 +47,7 @@ const PostCard = ({ post }) => {
 
   const navigate = useNavigate();
   return (
-    <div className='bg-white rounded-xl shadow p-4 space-y-4 w-full max-w-2xl:'>
+    <div className='bg-white rounded-xl shadow p-4 space-y-4 w-full max-w-2xl'>
       {/* USER INFO */}
       <div
         onClick={() => navigate('/profile/' + post.user._id)}

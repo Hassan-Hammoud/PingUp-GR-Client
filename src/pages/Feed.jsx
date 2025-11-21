@@ -37,8 +37,7 @@ const Feed = () => {
       {/* STORIES AND POST LIST  */}
       <div className=''>
         <StoriesBar />
-        <div className='w-2xl p-4 space-y-6'>
-          {/* // ! added w-2xl remove it when you check it again */}
+        <div className=' p-4 space-y-6'>
           {feeds.map((post, id) => {
             return (
               <PostCard
